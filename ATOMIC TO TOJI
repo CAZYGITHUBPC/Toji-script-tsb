@@ -1,0 +1,360 @@
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("1").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Domain Breaker"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("2").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Curse Impale"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("3").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Suprise Attack"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("4").Base
+
+local ToolName = baseButton.ToolName
+
+ToolName.Text = "Inverted Counter"
+
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local playerGui = player:WaitForChild("PlayerGui")
+
+
+local function findGuiAndSetText()
+
+    local screenGui = playerGui:FindFirstChild("ScreenGui")
+
+    if screenGui then
+
+        local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+
+        if magicHealthFrame then
+
+            local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+
+            if textLabel then
+
+                textLabel.Text = "Are you for real?.."
+
+            end
+
+        end
+
+    end
+
+end
+
+playerGui.DescendantAdded:Connect(findGuiAndSetText)
+ 
+findGuiAndSetText()
+
+-- DOMAIN BREAKER --
+local targetAnimationId = "15290930205" -- The ID of the animation you want to detect
+local animationId = "15121659862" -- The ID of the animation you want to play
+
+local animationSpeed = 1 -- Adjust this value to change the speed (default is 1)
+local anchorDuration = 1 -- Duration in seconds to keep the player anchored
+
+-- Get the local player
+local player = game.Players.LocalPlayer
+
+-- Function to create and play the animation
+local function playAnimation(character)
+    -- Create an animation instance
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. animationId
+
+    -- Load the animation onto the humanoid
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+        animationTrack:AdjustSpeed(animationSpeed) -- Adjust the animation speed
+    end
+end
+
+-- Function to anchor the player's character
+local function setAnchored(state)
+    local character = player.Character
+    if character then
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            rootPart.Anchored = state
+        end
+    end
+end
+
+-- Function to stop the target animation and perform the desired action after a delay
+local function onAnimationPlayed(animationTrack)
+    if animationTrack and animationTrack.Animation and animationTrack.Animation.AnimationId == "rbxassetid://" .. targetAnimationId then
+        animationTrack:Stop() -- Stop the target animation
+        
+        -- Get the character
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            -- Call the function to play the animation
+            playAnimation(character)
+        end
+    end
+end
+
+-- Connect the function to the humanoid's AnimationPlayed event for the local player's character
+local function onCharacterAdded(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+    end
+end
+
+-- Detect when the local player's character is added to the game
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
+
+-- CURSE IMPALE --
+local targetAnimationId = "15145462680" -- The ID of the animation you want to detect
+local animationId = "13365849295" -- The ID of the animation you want to play
+
+local animationSpeed = 1 -- Adjust this value to change the speed (default is 1)
+local anchorDuration = 1 -- Duration in seconds to keep the player anchored
+
+-- Get the local player
+local player = game.Players.LocalPlayer
+
+-- Function to create and play the animation
+local function playAnimation(character)
+    -- Create an animation instance
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. animationId
+
+    -- Load the animation onto the humanoid
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+        animationTrack:AdjustSpeed(animationSpeed) -- Adjust the animation speed
+    end
+end
+
+-- Function to anchor the player's character
+local function setAnchored(state)
+    local character = player.Character
+    if character then
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            rootPart.Anchored = state
+        end
+    end
+end
+
+-- Function to stop the target animation and perform the desired action after a delay
+local function onAnimationPlayed(animationTrack)
+    if animationTrack and animationTrack.Animation and animationTrack.Animation.AnimationId == "rbxassetid://" .. targetAnimationId then
+        animationTrack:Stop() -- Stop the target animation
+        
+        -- Get the character
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            -- Call the function to play the animation
+            playAnimation(character)
+        end
+    end
+end
+
+-- Connect the function to the humanoid's AnimationPlayed event for the local player's character
+local function onCharacterAdded(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+    end
+end
+
+-- Detect when the local player's character is added to the game
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
+
+-- SUPRISE ATTACK --
+local targetAnimationId = "18716871856" -- The ID of the animation you want to detect
+local animationId = "13501296372" -- The ID of the animation you want to play
+
+local animationSpeed = 1 -- Adjust this value to change the speed (default is 1)
+local anchorDuration = 1 -- Duration in seconds to keep the player anchored
+
+-- Get the local player
+local player = game.Players.LocalPlayer
+
+-- Function to create and play the animation
+local function playAnimation(character)
+    -- Create an animation instance
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. animationId
+
+    -- Load the animation onto the humanoid
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+        animationTrack:AdjustSpeed(animationSpeed) -- Adjust the animation speed
+    end
+end
+
+-- Function to anchor the player's character
+local function setAnchored(state)
+    local character = player.Character
+    if character then
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            rootPart.Anchored = state
+        end
+    end
+end
+
+-- Function to stop the target animation and perform the desired action after a delay
+local function onAnimationPlayed(animationTrack)
+    if animationTrack and animationTrack.Animation and animationTrack.Animation.AnimationId == "rbxassetid://" .. targetAnimationId then
+        animationTrack:Stop() -- Stop the target animation
+        
+        -- Get the character
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            -- Call the function to play the animation
+            playAnimation(character)
+        end
+    end
+end
+
+-- Connect the function to the humanoid's AnimationPlayed event for the local player's character
+local function onCharacterAdded(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+    end
+end
+
+-- Detect when the local player's character is added to the game
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
+
+-- Inverted Counter --
+local targetAnimationId = "15334974550" -- The ID of the animation you want to detect
+local animationId = "15957361339" -- The ID of the animation you want to play
+
+local animationSpeed = 1 -- Adjust this value to change the speed (default is 1)
+local anchorDuration = 1 -- Duration in seconds to keep the player anchored
+
+-- Get the local player
+local player = game.Players.LocalPlayer
+
+-- Function to create and play the animation
+local function playAnimation(character)
+    -- Create an animation instance
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. animationId
+
+    -- Load the animation onto the humanoid
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+        animationTrack:AdjustSpeed(animationSpeed) -- Adjust the animation speed
+    end
+end
+
+-- Function to anchor the player's character
+local function setAnchored(state)
+    local character = player.Character
+    if character then
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            rootPart.Anchored = state
+        end
+    end
+end
+
+-- Function to stop the target animation and perform the desired action after a delay
+local function onAnimationPlayed(animationTrack)
+    if animationTrack and animationTrack.Animation and animationTrack.Animation.AnimationId == "rbxassetid://" .. targetAnimationId then
+        animationTrack:Stop() -- Stop the target animation
+        
+        -- Get the character
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            -- Call the function to play the animation
+            playAnimation(character)
+        end
+    end
+end
+
+-- Connect the function to the humanoid's AnimationPlayed event for the local player's character
+local function onCharacterAdded(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+    end
+end
+
+-- Detect when the local player's character is added to the game
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
